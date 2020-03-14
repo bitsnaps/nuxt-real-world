@@ -59,3 +59,9 @@ and then create a `Procfile` in order to tell heroku how to build the app with t
 ```
 web: npm run start
 ```
+finally using git push the repo to `heroku` origin as follows:
+```
+git add -A
+git commit -m "Configuration to deploy to heroku"
+git push heroku master
+```
