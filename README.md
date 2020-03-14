@@ -41,3 +41,21 @@ If you want to run json-server with a delay (in order to test the progress bar f
 ```
 json-server --watch db.json --delay 2000
 ```
+# Deploy on Heroku
+
+Login to heroku and create a new app with this configs:
+```
+heroku login
+heroku create
+heroku config:set NPM_CONFIG_PRODUCTION=false
+heroku config:set HOST=0.0.0.0
+heroku config:set NODE_ENV=production
+```
+then add to `package.json` the build script:
+```
+"heroku-postbuild":"npm run build"
+```
+and then create a `Procfile` in order to tell heroku how to build the app with this content:
+```
+web: npm run start
+```
