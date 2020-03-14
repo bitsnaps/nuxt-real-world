@@ -65,3 +65,35 @@ git add -A
 git commit -m "Configuration to deploy to heroku"
 git push heroku master
 ```
+
+P.S. Do to not forget to update dependencies whenever you get warnings:
+```
+npm update
+```
+
+Generate a static deployment
+```
+npm run generate
+```
+if you have a dynamic generated pages, you must add a dynamic routes config to `nuxt.config.js`, in this example:
+File: nuxt.config.js
+```
+import EventService from './services/EventService.js'
+
+export default {
+  ...
+  generate: {
+    routes: () => {
+      return EventService.getEvents().then(response => {
+        return response.data.map(event => {
+          return '/event/' + event.id
+        })
+      })
+    }
+  }  
+}
+```
+you can then run a local web server to test (you could use http-server running `dist` directory):
+```
+http-server dist
+```
