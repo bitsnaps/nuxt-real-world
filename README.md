@@ -71,10 +71,16 @@ P.S. Do to not forget to update dependencies whenever you get warnings:
 npm update
 ```
 
-Generate a static deployment
+# Generate a static deployment
+
 ```
 npm run generate
 ```
+you can then run a local web server to test (you could use http-server running `dist` directory):
+```
+http-server dist
+```
+
 if you have a dynamic generated pages, you must add a dynamic routes config to `nuxt.config.js`, in this example:
 File: nuxt.config.js
 ```
@@ -92,8 +98,4 @@ export default {
     }
   }  
 }
-```
-you can then run a local web server to test (you could use http-server running `dist` directory):
-```
-http-server dist
 ```
